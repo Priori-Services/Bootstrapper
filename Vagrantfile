@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 $script = <<-SCRIPT
-dnf update -y && dnf install podman buildah npm just cockpit cockpit-podman dnf-automatic -y 
+dnf update -y && dnf install podman buildah npm just cockpit cockpit-podman dnf-automatic podman-compose -y 
 systemctl enable --now cockpit.socket
 systemctl enable --now podman.socket
 systemctl enable --now dnf-automatic
@@ -13,6 +13,8 @@ npm i -g yarn
 
 modprobe ip_tables
 echo 'ip_tables' | tee -a /etc/modules
+
+chcon -Rt svirt_sandbox_file_t /vagrant/PRIORI_SERVICES_DB
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -38,7 +40,8 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 1433, host: 1433 # Database
   config.vm.network "forwarded_port", guest: 4173, host: 4173 # Web (prod)
   config.vm.network "forwarded_port", guest: 5173, host: 5173 # Web (dev)
-  config.vm.network "forwarded_port", guest: 5000, host: 5000 # API
+  config.vm.network "forwarded_port", guest: 5000, host: 5000 # API (dev)
+  config.vm.network "forwarded_port", guest: 8080, host: 8080 # Cockpit
   config.vm.network "forwarded_port", guest: 9090, host: 9090 # Cockpit
   
   # Maybe these could be useful at some point?

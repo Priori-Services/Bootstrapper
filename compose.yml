@@ -1,0 +1,51 @@
+---
+version: '3'
+
+services:
+  # web:
+  #   build: PRIORI_SERVICES_WEB
+  #   ports: 
+  #     - 4173:4173
+  #     - 5173:5173
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - frontend
+  #   environment:
+  #     - PRIORI_API_ENDPOINT: '172.20.0.3:8080'
+  api:
+    build: PRIORI_SERVICES_API
+    hostname: priori_api
+    ports:
+      - 5000:5000
+      - 8080:80
+    depends_on:
+      - database
+    networks:
+      frontend:
+        ipv4_address: 162.20.0.7
+      backend:
+        ipv4_address: 172.20.0.7
+  database:
+    build: PRIORI_SERVICES_DB
+    ports:
+      - 1433:1433
+    hostname: priori_db
+    environment:
+      - "MSSQL_SA_PASSWORD=${PRIORI_DATABASE_PASSWORD}"
+    networks:
+      backend:
+        ipv4_address: 172.20.0.8
+
+networks:
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "162.20.0.0/28"
+          gateway: "162.20.0.1"
+  backend:
+    ipam:
+      config:
+        - subnet: "172.20.0.0/28"
+          gateway: "172.20.0.1"

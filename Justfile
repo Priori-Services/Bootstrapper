@@ -1,17 +1,12 @@
+set dotenv-load
+set ignore-comments
+
 default: dev-env
 
-containers +options:
-    just -f Containers.Justfile {{options}}
+apply-data:
+    "$CONTAINER_RUNNER" exec "$PRIORI_DATABASE_NAME" "/opt/mssql-tools/bin/sqlcmd" "-S" "localhost" "-U" "sa" "-P" "${PRIORI_DATABASE_PASSWORD}" "-i" "/opt/app/Priori.sql"
 
-database +options:
-    just -f Database.Justfile {{options}}
-
-prod: (containers "build") (containers "create")
-
-machine:
-    vagrant up && vagrant ssh
-
-dev-env: (database "start")
+dev-env:
     mprocs --config=mprocs.yaml
 
 sqlcmd: 
@@ -21,6 +16,10 @@ sqlcmd:
 
 default-env:
     cp -f ".env-template" ".env"
+
+[linux]
+database-perms:
+    chcon -Rt svirt_sandbox_file_t /vagrant/PRIORI_SERVICES_DB
 
 [windows]
 setup-vagrant:
