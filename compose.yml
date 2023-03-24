@@ -2,17 +2,16 @@
 version: '3'
 
 services:
-  # web:
-  #   build: PRIORI_SERVICES_WEB
-  #   ports: 
-  #     - 4173:4173
-  #     - 5173:5173
-  #   depends_on:
-  #     - api
-  #   networks:
-  #     - frontend
-  #   environment:
-  #     - PRIORI_API_ENDPOINT: '172.20.0.3:8080'
+  web:
+    build: PRIORI_SERVICES_WEB
+    ports: 
+      - 3000:3000
+    depends_on:
+      - api
+    networks:
+      - frontend
+    environment:
+      - 'PRIORI_API_ENDPOINT=172.20.0.7:8080'
   api:
     build: PRIORI_SERVICES_API
     hostname: priori_api
