@@ -1,0 +1,17 @@
+{
+  "folders": [
+	{
+		"path": "PRIORI_SERVICES_API"
+	},
+	{
+		"path": "PRIORI_SERVICES_WEB"
+	},
+	{
+		"path": "PRIORI_SERVICES_DB"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {}
+}

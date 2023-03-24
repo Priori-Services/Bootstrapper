@@ -3,10 +3,20 @@ set ignore-comments
 
 default: dev-env
 
-apply-data:
-    "$CONTAINER_RUNNER" exec "$PRIORI_DATABASE_NAME" "/opt/mssql-tools/bin/sqlcmd" "-S" "localhost" "-U" "sa" "-P" "${PRIORI_DATABASE_PASSWORD}" "-i" "/opt/app/Priori.sql"
+build-dev-db:
+    buildah build --tag="$PRIORI_DATABASE_IMAGE" ./PRIORI_SERVICES_DB
 
-dev-env:
+create-dev-db:
+    -"$CONTAINER_RUNNER" run \
+    -e "ACCEPT_EULA=Y" \
+    -e "MSSQL_SA_PASSWORD=$PRIORI_DATABASE_PASSWORD" \
+    -e "MSSQL_PID=Express" \
+    -p 1433:1433 \
+    --name "$PRIORI_DATABASE_NAME" \
+    "$PRIORI_DATABASE_IMAGE"
+
+dev-env: create-dev-db
+    "$CONTAINER_RUNNER" start "$PRIORI_DATABASE_NAME"
     mprocs --config=mprocs.yaml
 
 sqlcmd: 
