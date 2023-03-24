@@ -1,0 +1,14 @@
+name: Container Image CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 'Create environment with Docker Compose'    
+        run: docker-compose up -d
