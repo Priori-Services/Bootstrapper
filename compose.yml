@@ -2,18 +2,18 @@
 version: "3"
 
 services:
-  web:
-    build: PRIORI_SERVICES_WEB
-    ports:
-      - 3000:3000
-    depends_on:
-      - api
-    networks:
-      - frontend
-    environment:
-      - "PRIORI_API_ENDPOINT=http://162.20.0.7:80"
+   web:
+   build: https://github.com/tulilirockz/PRIORI_SERVICES_WEB.git
+   ports:
+     - 3000:3000
+   depends_on:
+     - api
+   networks:
+     - frontend
+   environment:
+     - "PRIORI_API_ENDPOINT=http://162.20.0.7:80"
   api:
-    build: PRIORI_SERVICES_API
+    build: https://github.com/tulilirockz/PRIORI_SERVICES_API.git
     hostname: priori_api
     ports:
       - 5000:5000
@@ -26,12 +26,14 @@ services:
       backend:
         ipv4_address: 172.20.0.7
   database:
-    build: PRIORI_SERVICES_DB
+    build: https://github.com/tulilirockz/PRIORI_SERVICES_DB.git
     ports:
       - 1433:1433
     hostname: priori_db
     environment:
       - "MSSQL_SA_PASSWORD=${PRIORI_DATABASE_PASSWORD}"
+    volumes: 
+      - ${PWD}/setup.sql:/usr/config/setup.sql:Z
     networks:
       backend:
         ipv4_address: 172.20.0.8
