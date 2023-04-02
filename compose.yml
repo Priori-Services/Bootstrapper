@@ -11,7 +11,7 @@ services:
     networks:
       - frontend
     environment:
-      - "PRIORI_API_ENDPOINT=http://162.20.0.7:8080"
+      - "PRIORI_API_ENDPOINT=http://162.20.0.7:80"
   api:
     build: PRIORI_SERVICES_API
     hostname: priori_api
