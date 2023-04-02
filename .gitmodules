@@ -1,11 +1,14 @@
 [submodule "PRIORI_SERVICES_DB"]
 	path = PRIORI_SERVICES_DB
 	url = git@github.com:tulilirockz/PRIORI_SERVICES_DB.git
+	branch = develop
 
 [submodule "PRIORI_SERVICES_API"]
 	path = PRIORI_SERVICES_API
 	url = git@github.com:tulilirockz/PRIORI_SERVICES_API.git
+	branch = develop
 
 [submodule "PRIORI_SERVICES_WEB"]
 	path = PRIORI_SERVICES_WEB
 	url = git@github.com:tulilirockz/PRIORI_SERVICES_WEB.git
+	branch = develop
