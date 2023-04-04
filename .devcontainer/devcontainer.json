@@ -16,7 +16,11 @@
 			"extensions": [
 				"ms-dotnettools.csharp",
 				"EditorConfig.EditorConfig",
-				"ms-vsliveshare.vsliveshare"
+				"ms-vsliveshare.vsliveshare",
+				"GitHub.vscode-pull-request-github",
+				"ms-mssql.mssql",
+				"rangav.vscode-thunder-client",
+				"dbaeumer.vscode-eslint"
 			]
 		}
 	}
