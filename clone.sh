@@ -1,4 +1,4 @@
 #!/bin/sh
-for REPO in PRIORI_SERVICES_WEB PRIORI_SERVICES_API PRIORI_SERVICES_DB ; do
-    git clone "https://github.com/tulilirockz/${REPO}.git"
+for REPO in Web-Services API Database ; do
+    git clone "https://github.com/Priori-Services/${REPO}.git"
 done
