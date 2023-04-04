@@ -1,27 +1,25 @@
-// References: https://aka.ms/devcontainer.json https://github.com/devcontainers/templates/tree/main/src/dotnet
-// Make sure to create the "backend" network from the compose file before running this!
 {
-	"name": "C# (.NET)",
-	"image": "mcr.microsoft.com/devcontainers/dotnet:0-7.0-bullseye",
-	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
-	"workspaceFolder": "/workspace",
-	"runArgs": [
-		"--userns=keep-id",
-		"--name=test",
-		"--network=host"
-	],
-	"containerUser": "vscode",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-dotnettools.csharp",
-				"EditorConfig.EditorConfig",
-				"ms-vsliveshare.vsliveshare",
-				"GitHub.vscode-pull-request-github",
-				"ms-mssql.mssql",
-				"rangav.vscode-thunder-client",
-				"dbaeumer.vscode-eslint"
-			]
-		}
-	}
+    "name": "C# (.NET)",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:0-7.0",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
+    "workspaceFolder": "/workspace",
+    "runArgs": [
+        "--userns=keep-id",
+        "--name=test",
+        "--network=host"
+    ],
+    "containerUser": "vscode",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "EditorConfig.EditorConfig",
+                "ms-vsliveshare.vsliveshare",
+                "GitHub.vscode-pull-request-github",
+                "ms-mssql.mssql",
+                "rangav.vscode-thunder-client",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    }
 }
