@@ -1,4 +1,5 @@
 {
+    //
     "name": "C# (.NET)",
     "image": "mcr.microsoft.com/devcontainers/dotnet:0-7.0",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
@@ -7,6 +8,9 @@
         "--userns=keep-id",
         "--name=test",
         "--network=host"
+    ],
+    "mounts": [
+        "source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,Z"
     ],
     "containerUser": "vscode",
     "customizations": {
