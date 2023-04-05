@@ -1,12 +1,11 @@
 {
-    //
     "name": "C# (.NET)",
     "image": "mcr.microsoft.com/devcontainers/dotnet:0-7.0",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
     "workspaceFolder": "/workspace",
     "runArgs": [
         "--userns=keep-id",
-        "--name=test",
+        "--name=metabox",
         "--network=host"
     ],
     "mounts": [
@@ -25,5 +24,6 @@
                 "dbaeumer.vscode-eslint"
             ]
         }
-    }
+    },
+    "postCreateCommand": "find .devcontainer/tasks -iname '*.sh' -exec 'sh' '{}' ';'"
 }
