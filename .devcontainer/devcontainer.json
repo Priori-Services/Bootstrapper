@@ -25,5 +25,5 @@
             ]
         }
     },
-    "postCreateCommand": "find .devcontainer/tasks -iname '*.sh' -exec 'sh' '{}' ';'"
+    "postCreateCommand": "find .devcontainer/tasks -iname '*.sh' -exec 'sh' '-c' 'echo -=-=-=-= [ {} ] ; sh {}' ';'"
 }
