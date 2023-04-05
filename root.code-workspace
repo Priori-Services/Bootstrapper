@@ -1,17 +1,17 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "./PRIORI_SERVICES_WEB"
-		},
-		{
-			"path": "./PRIORI_SERVICES_API"
-		},
-		{
-			"path": "./PRIORI_SERVICES_DB"
-		}
-	],
-	"settings": {}
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "./PRIORI-API"
+        },
+        {
+            "path": "./PRIORI-Database"
+        },
+        {
+            "path": "./PRIORI-Web"
+        }
+    ],
+    "settings": {}
 }
