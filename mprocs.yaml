@@ -1,7 +1,0 @@
-procs:
-  website:
-    cmd: ["npm", "run", "dev", "--prefix", "PRIORI_SERVICES_WEB"]
-  database-logs:
-    cmd: ["podman", "logs", "-f", "sqlserver-dev"]
-  api:
-    cmd: ["dotnet", "watch", "--project", "PRIORI_SERVICES_API"]
